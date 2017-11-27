@@ -17,30 +17,29 @@ int main(int argc, char** argv)
 	int d;
 	int i = 0;
 	memset(buf, '\0', sizeof(buf));
+	//FILE * a = fopen(argv[1], "r");
 	std::ifstream infile;
 	infile.open(argv[1]);
 	if(!infile) {
     cout << endl << "Failed to open file ";
         return 1;
 	}
-	
-	for(i = 0; i < 50; i++)
-		array3D.push_back(temp);
-
+	array3D.push_back(temp);
 	while(!infile.eof())
-	{		
+	{			
 			if(count < 3)
-			{
+			{				
 				infile >> array3D[v][count];
 				count++;
 			}
-			else
+			else 
 			{
+				array3D.push_back(temp);
 				count = 0;
 				v++;
 			}
 	}
-	double dist;
+	
 	x = array3D.size();
 	int** ary = new int*[x];
 	for(int i = 0; i < x; i++)
@@ -58,7 +57,7 @@ int main(int argc, char** argv)
 				ary[q][b] = (int)dist;
 			}
 			else
-				ary[q][b] = 0;	
+				ary[q][b] = 0;
 		}
 		
 	for(int h = 0; h < x; h++)
