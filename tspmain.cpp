@@ -6,7 +6,7 @@ int minKey(int key[], bool mstSet[], int n)
    // Initialize min value
    int min = INT_MAX, min_index;
  
-   for (int v = 0; v < n - 1; v++)
+   for (int v = 0; v < n; v++)
      if (mstSet[v] == false && key[v] < min)
          min = key[v], min_index = v;
  
@@ -15,7 +15,7 @@ int minKey(int key[], bool mstSet[], int n)
 int printMST(int parent[], int n, int **graph)
 {
    printf("Edge   Weight\n");
-   for (int i = 1; i < n; i++)
+   for (int i = 1; i < n - 1; i++)
       printf("%d - %d    %d \n", parent[i], i, graph[i][parent[i]]);
 }
 void primMST(int **graph, int size)
