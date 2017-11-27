@@ -71,8 +71,8 @@ int main(int argc, char** argv)
 	std::ifstream infile;
 	infile.open(argv[1]);
 	if(!infile) {
-    cout << endl << "Failed to open file ";
-        return 1;
+		cout << endl << "Failed to open file ";
+        	return 1;
 	}
 	array3D.push_back(temp);
 	while(!infile.eof())
@@ -89,6 +89,7 @@ int main(int argc, char** argv)
 				v++;
 			}
 	}
+	infile.close();
 	
 	x = array3D.size();
 	int** ary = new int*[x];
@@ -96,6 +97,7 @@ int main(int argc, char** argv)
 		ary[i] = new int[x];
 	
 	for(int q = 0; q < x; q++)
+	{
 		for(int b = 0; b < x; b++)
 		{
 			if(q != b)	{
@@ -109,14 +111,17 @@ int main(int argc, char** argv)
 			else
 				ary[q][b] = 0;
 		}
-		
+	}
+	
 	for(int h = 0; h < x; h++)
 	{
 		for(int g = 0; g < x; g++)
-		cout << ary[h][g] << " ";
-	cout << endl;
+		{
+			cout << ary[h][g] << " ";
+		}
+		cout << endl;
 	}
-	infile.close();
+
 	primMST(ary, x); 
 	return 0;
 }
