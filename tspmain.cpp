@@ -8,17 +8,16 @@ int main(int argc, char** argv)
 	//vector<int> array2D;
 	double dist;
 	int h = 0;
-	int num;
+	//int num;
 	int count = 0;
 	int v = 0;
 	int x = 0;
-	int t;
-	int a, b, c;
-	int n = 0;
-	int d;
-	int i = 0;
+	//int t;
+	//int a, b, c;
+	//int n = 0;
+	//int d;
+	//int i = 0;
 	memset(buf, '\0', sizeof(buf));
-	//FILE * a = fopen(argv[1], "r");
 	std::ifstream infile;
 	infile.open(argv[1]);
 	if(!infile) {
