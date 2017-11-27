@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 int main(int argc, char** argv)
 {
 	char buf[100];
