@@ -5,7 +5,7 @@ int main(int argc, char** argv)
 	char buf[100];
 	vector<vector<int> >array3D;
 	vector<int>temp(3);
-	vector<int> array2D;
+	//vector<int> array2D;
 	int h = 0;
 	int num;
 	int count = 0;
