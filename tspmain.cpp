@@ -15,8 +15,8 @@ int minKey(int key[], bool mstSet[], int n)
 int printMST(int parent[], int n, int **graph)
 {
    printf("Edge   Weight\n");
-   for (int i = 1; i < n - 1; i++)
-      printf("%d - %d    %d \n", parent[i], i, graph[i][parent[i]]);
+   for (int i = 1; i < n; i++)
+		printf("%d - %d    %d \n", parent[i], i, graph[i][parent[i]]);
 }
 void primMST(int **graph, int size)
 {
@@ -56,6 +56,32 @@ void primMST(int **graph, int size)
  
      // print the constructed MST
      printMST(parent, size, graph);
+	 int* oddVertices = new int[size];
+	for(int i = 1; i < size; i++)
+		oddVertices[i] = 1; 
+	for(int c = 0; c < size; c++)
+		oddVertices[parent[c]]++;
+	//creates mst
+	int** mst = new int*[size];
+	for(int i = 0; i < size; i++)
+		mst[i] = new int[size];
+	
+	for (int i = 1; i < size; i++){
+		mst[i][parent[i]] = graph[i][parent[i]];
+		mst[parent[i]][i] = graph[i][parent[i]];
+	}	
+	//print mst 
+	/*for(int h = 0; h < size; h++)
+	{
+		for(int g = 0; g < size; g++)
+		{
+			cout << mst[h][g] << " ";
+		}
+		cout << endl;
+	}*/
+	//print odd vertices count
+	//for(int q = 0; q < size; q++)
+		//cout << "in oddVertices " << oddVertices[q] << endl;
 }
 int main(int argc, char** argv)
 {
@@ -90,8 +116,12 @@ int main(int argc, char** argv)
 			}
 	}
 	infile.close();
-	
+	array3D.pop_back();
 	x = array3D.size();
+	cout << "x is " << x << endl;
+	for(int p = 0; p < array3D.size(); p++)
+		for(int r = 0; r < 3; r++)
+			cout <<array3D[p][r] << endl;
 	int** ary = new int*[x];
 	for(int i = 0; i < x; i++)
 		ary[i] = new int[x];
