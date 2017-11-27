@@ -75,7 +75,7 @@ int printMST(int parent[], int n, int **graph)
    for (int i = 1; i < n; i++)
 		printf("%d - %d    %d \n", parent[i], i, graph[i][parent[i]]);
 }
-void primMST(int **graph, int size)
+int primMST(int **graph, int size)
 {
      int parent[size]; // Array to store constructed MST
      int key[size];   // Key values used to pick minimum weight edge in cut
@@ -206,10 +206,12 @@ void primMST(int **graph, int size)
 		}
 		cout << endl;
 	}*/
+	return total;
 }
 int main(int argc, char** argv)
 {
 	char buf[100];
+	string name;
 	vector<vector<int> >array3D;
 	vector<int>temp(3);
 	double dist;
@@ -217,6 +219,7 @@ int main(int argc, char** argv)
 	int count = 0;
 	int v = 0;
 	int x = 0;
+	ofstream outfile;
 	memset(buf, '\0', sizeof(buf));
 	std::ifstream infile;
 	infile.open(argv[1]);
@@ -276,6 +279,22 @@ int main(int argc, char** argv)
 		cout << endl;
 	}
 
-	primMST(ary, x); 
+	int toursum = primMST(ary, x); 
+	
+	
+	name = argv[1];
+	name.append(".tour");
+	outfile.open(name.c_str());
+	outfile << toursum << "\n";
+	for(int i = 0; i < finalArray.size(); i++)
+		outfile << finalArray[i] << "\n";
+	outfile.close();
+	//strcpy (name.c_str());
+	//cout << name << endl;
+	//infile.open(name.c_str());
+	//infile << total << endl;
+	//for(int i = 0; i < finalArray.size(); i++)
+		//infile << "hi \n.";
+	//infile.close();
 	return 0;
 }
