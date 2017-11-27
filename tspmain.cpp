@@ -83,12 +83,37 @@ void primMST(int **graph, int size)
 	//print odd vertices count
 	//for(int q = 0; q < size; q++)
 		//cout << "in oddVertices " << oddVertices[q] << endl;
+	//place in oddVertices array shows which vertex is odd or even
+	vector<int>oddV;
 	for(int z = 0; z < size; z++)
 		if((oddVertices[z] % 2) == 0)
 			oddVertices[z] = 0;
+		else
+			oddV.push_back(z);
+	//print odd vertices
+	for(int i = 0; i < oddV.size(); i++)
+		cout << oddV[i] << endl;
+	cout << "size is " << oddV.size() << endl;
+	//nearby matching
+	for (int i = (oddV.size()-1); i >= 0; i-=2){
+		mst[oddV[i]][oddV[i-1]] = graph[oddV[i]][oddV[i-1]];
+		mst[oddV[i-1]][oddV[i]] = graph[oddV[i]][oddV[i-1]];
+	}
+		//i--;
+		//mst[i][parent[i]] = graph[i][parent[i]];
+		//mst[parent[i]][i] = graph[i][parent[i]];
+	
 	//cout << endl;
 	//for(int q = 0; q < size; q++)
 		//cout << "in oddVertices " << oddVertices[q] << endl;
+	/*for(int h = 0; h < size; h++)
+	{
+		for(int g = 0; g < size; g++)
+		{
+			cout << mst[h][g] << " ";
+		}
+		cout << endl;
+	}*/
 }
 int main(int argc, char** argv)
 {
