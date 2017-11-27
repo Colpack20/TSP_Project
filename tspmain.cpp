@@ -280,8 +280,6 @@ int main(int argc, char** argv)
 	}
 
 	int toursum = primMST(ary, x); 
-	
-	
 	name = argv[1];
 	name.append(".tour");
 	outfile.open(name.c_str());
@@ -289,12 +287,5 @@ int main(int argc, char** argv)
 	for(int i = 0; i < finalArray.size(); i++)
 		outfile << finalArray[i] << "\n";
 	outfile.close();
-	//strcpy (name.c_str());
-	//cout << name << endl;
-	//infile.open(name.c_str());
-	//infile << total << endl;
-	//for(int i = 0; i < finalArray.size(); i++)
-		//infile << "hi \n.";
-	//infile.close();
 	return 0;
 }
