@@ -70,6 +70,7 @@ void primMST(int **graph, int size)
 		mst[i][parent[i]] = graph[i][parent[i]];
 		mst[parent[i]][i] = graph[i][parent[i]];
 	}	
+	//perfect_matching(oddVertices);
 	//print mst 
 	/*for(int h = 0; h < size; h++)
 	{
@@ -80,6 +81,12 @@ void primMST(int **graph, int size)
 		cout << endl;
 	}*/
 	//print odd vertices count
+	//for(int q = 0; q < size; q++)
+		//cout << "in oddVertices " << oddVertices[q] << endl;
+	for(int z = 0; z < size; z++)
+		if((oddVertices[z] % 2) == 0)
+			oddVertices[z] = 0;
+	//cout << endl;
 	//for(int q = 0; q < size; q++)
 		//cout << "in oddVertices " << oddVertices[q] << endl;
 }
