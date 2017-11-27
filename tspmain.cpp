@@ -187,7 +187,7 @@ int primMST(int **graph, int size)
 	//for(int y = 0; y < size; y++)
 		//cout << finalArray[y] << endl;
 	int total = 0;
-	for(int y = 0; y < size; y++)
+	for(int y = 0; y < size-1; y++)
 		total += graph[finalArray[y]][finalArray[y+1]];
 	
 	cout << "total is " << total << endl;
@@ -260,9 +260,9 @@ int main(int argc, char** argv)
 			if(q != b)	{
 				dist = (pow((array3D[b][1] - array3D[q][1]),2) + pow((array3D[b][2] - array3D[q][2]),2));
 				if(dist < 0)
-					dist = sqrt(dist*-1);
+					dist = round(sqrt(dist*-1));
 				else
-					dist = sqrt(dist);
+					dist = round(sqrt(dist));
 				ary[q][b] = (int)dist;
 			}
 			else
@@ -280,6 +280,8 @@ int main(int argc, char** argv)
 	}
 
 	int toursum = primMST(ary, x); 
+	
+	
 	name = argv[1];
 	name.append(".tour");
 	outfile.open(name.c_str());
@@ -287,5 +289,12 @@ int main(int argc, char** argv)
 	for(int i = 0; i < finalArray.size(); i++)
 		outfile << finalArray[i] << "\n";
 	outfile.close();
+	//strcpy (name.c_str());
+	//cout << name << endl;
+	//infile.open(name.c_str());
+	//infile << total << endl;
+	//for(int i = 0; i < finalArray.size(); i++)
+		//infile << "hi \n.";
+	//infile.close();
 	return 0;
 }
