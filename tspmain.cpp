@@ -5,18 +5,11 @@ int main(int argc, char** argv)
 	char buf[100];
 	vector<vector<int> >array3D;
 	vector<int>temp(3);
-	//vector<int> array2D;
 	double dist;
 	int h = 0;
-	//int num;
 	int count = 0;
 	int v = 0;
 	int x = 0;
-	//int t;
-	//int a, b, c;
-	//int n = 0;
-	//int d;
-	//int i = 0;
 	memset(buf, '\0', sizeof(buf));
 	std::ifstream infile;
 	infile.open(argv[1]);
