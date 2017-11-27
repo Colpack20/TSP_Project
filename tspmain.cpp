@@ -56,8 +56,6 @@ void Graph::DFS()
             DFSUtil(i, visited);
 }
 
-
-
 int minKey(int key[], bool mstSet[], int n)
 {
    // Initialize min value
@@ -191,9 +189,6 @@ int primMST(int **graph, int size)
 		total += graph[finalArray[y]][finalArray[y+1]];
 	
 	cout << "total is " << total << endl;
-		//i--;
-		//mst[i][parent[i]] = graph[i][parent[i]];
-		//mst[parent[i]][i] = graph[i][parent[i]];
 	
 	//cout << endl;
 	//for(int q = 0; q < size; q++)
@@ -230,17 +225,17 @@ int main(int argc, char** argv)
 	array3D.push_back(temp);
 	while(!infile.eof())
 	{			
-			if(count < 3)
-			{				
-				infile >> array3D[v][count];
-				count++;
-			}
-			else 
-			{
-				array3D.push_back(temp);
-				count = 0;
-				v++;
-			}
+		if(count < 3)
+		{				
+			infile >> array3D[v][count];
+			count++;
+		}
+		else 
+		{
+			array3D.push_back(temp);
+			count = 0;
+			v++;
+		}
 	}
 	infile.close();
 	array3D.pop_back();
@@ -280,8 +275,7 @@ int main(int argc, char** argv)
 	}
 
 	int toursum = primMST(ary, x); 
-	
-	
+		
 	name = argv[1];
 	name.append(".tour");
 	outfile.open(name.c_str());
