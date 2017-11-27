@@ -6,6 +6,7 @@ int main(int argc, char** argv)
 	vector<vector<int> >array3D;
 	vector<int>temp(3);
 	//vector<int> array2D;
+	double dist;
 	int h = 0;
 	int num;
 	int count = 0;
