@@ -1,6 +1,63 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+vector<int> finalArray;
+class Graph
+{
+    int V;    // No. of vertices
+    list<int> *adj;    // Pointer to an array containing adjacency lists
+    void DFSUtil(int v, bool visited[]);  // A function used by DFS
+public:
+    Graph(int V);   // Constructor
+    void addEdge(int v, int w);   // function to add an edge to graph
+    void DFS();    // prints DFS traversal of the complete graph
+};
+ 
+Graph::Graph(int V)
+{
+    this->V = V;
+    adj = new list<int>[V];
+}
+ 
+void Graph::addEdge(int v, int w)
+{
+    adj[v].push_back(w); // Add w to v’s list.
+}
+ 
+void Graph::DFSUtil(int v, bool visited[])
+{
+    // Mark the current node as visited and print it
+    
+	visited[v] = true;
+    cout << v << " ";
+	//vector<int>finalArray;
+	finalArray.push_back(v);
+	
+    // Recur for all the vertices adjacent to this vertex
+    list<int>::iterator i;
+    for(i = adj[v].begin(); i != adj[v].end(); ++i)
+        if(!visited[*i])
+            DFSUtil(*i, visited);
+}
+ 
+// The function to do DFS traversal. It uses recursive DFSUtil()
+void Graph::DFS()
+{
+    int counter = 0;
+	// Mark all the vertices as not visited
+    bool *visited = new bool[V];
+    for (int i = 0; i < V; i++)
+        visited[i] = false;
+ 
+    // Call the recursive helper function to print DFS traversal
+    // starting from all vertices one by one
+    for (int i = 0; i < V; i++)
+        if (visited[i] == false)
+            DFSUtil(i, visited);
+}
+
+
+
 int minKey(int key[], bool mstSet[], int n)
 {
    // Initialize min value
@@ -86,10 +143,11 @@ void primMST(int **graph, int size)
 	//place in oddVertices array shows which vertex is odd or even
 	vector<int>oddV;
 	for(int z = 0; z < size; z++)
-		if((oddVertices[z] % 2) == 0)
-			oddVertices[z] = 0;
-		else
+		if((oddVertices[z] % 2) != 0)
 			oddV.push_back(z);
+		//oddVertices[z] = 0;
+		//else
+			
 	//print odd vertices
 	for(int i = 0; i < oddV.size(); i++)
 		cout << oddV[i] << endl;
@@ -99,6 +157,40 @@ void primMST(int **graph, int size)
 		mst[oddV[i]][oddV[i-1]] = graph[oddV[i]][oddV[i-1]];
 		mst[oddV[i-1]][oddV[i]] = graph[oddV[i]][oddV[i-1]];
 	}
+	//euler tour
+	vector<vector<int> > intermed(size);
+	for(int h = 0; h < size; h++)
+		for(int g = 0; g < size; g++)
+			if(mst[h][g] != 0)
+				intermed[h].push_back(g);
+			
+	for(int h = 0; h < size; h++)
+	{
+		for(int g = 0; g < intermed[h].size(); g++)
+		{
+			cout << intermed[h][g] << " ";
+		}
+		cout << endl;
+	}
+	int ty;
+	Graph g(size);
+	for(int h = 0; h < size; h++)
+		for(int a = 0; a < intermed[h].size(); a++){
+			ty = intermed[h][a];
+			g.addEdge(h, ty);
+		}
+   
+	cout << "Following is Depth First Traversaln" << endl;
+	//int finalArray[size];
+    g.DFS();
+	cout << endl;
+	//for(int y = 0; y < size; y++)
+		//cout << finalArray[y] << endl;
+	int total = 0;
+	for(int y = 0; y < size; y++)
+		total += graph[finalArray[y]][finalArray[y+1]];
+	
+	cout << "total is " << total << endl;
 		//i--;
 		//mst[i][parent[i]] = graph[i][parent[i]];
 		//mst[parent[i]][i] = graph[i][parent[i]];
@@ -163,7 +255,7 @@ int main(int argc, char** argv)
 		for(int b = 0; b < x; b++)
 		{
 			if(q != b)	{
-				dist = (array3D[b][1] - array3D[q][1]) + (array3D[b][2] - array3D[q][2]);
+				dist = (pow((array3D[b][1] - array3D[q][1]),2) + pow((array3D[b][2] - array3D[q][2]),2));
 				if(dist < 0)
 					dist = sqrt(dist*-1);
 				else
