@@ -11,19 +11,16 @@ public:
     Graph(int V);   // Constructor
     void addEdge(int v, int w);   // function to add an edge to graph
     void DFS();    // prints DFS traversal of the complete graph
-};
- 
+}; 
 Graph::Graph(int V)
 {
     this->V = V;
     adj = new list<int>[V];
-}
- 
+} 
 void Graph::addEdge(int v, int w)
 {
     adj[v].push_back(w); // Add w to v’s list.
-}
- 
+} 
 void Graph::DFSUtil(int v, bool visited[])
 {
     // Mark the current node as visited and print it
@@ -38,8 +35,7 @@ void Graph::DFSUtil(int v, bool visited[])
     for(i = adj[v].begin(); i != adj[v].end(); ++i)
         if(!visited[*i])
             DFSUtil(*i, visited);
-}
- 
+} 
 // The function to do DFS traversal. It uses recursive DFSUtil()
 void Graph::DFS()
 {
@@ -55,7 +51,6 @@ void Graph::DFS()
         if (visited[i] == false)
             DFSUtil(i, visited);
 }
-
 int minKey(int key[], bool mstSet[], int n)
 {
    // Initialize min value
@@ -180,7 +175,7 @@ int primMST(int **graph, int size)
    
 	cout << "Following is Depth First Traversaln" << endl;
 	//int finalArray[size];
-    g.DFS();
+    	g.DFS();
 	cout << endl;
 	//for(int y = 0; y < size; y++)
 		//cout << finalArray[y] << endl;
