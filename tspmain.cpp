@@ -224,6 +224,7 @@ int primMST(int **graph, int size)
 	for(int y = 0; y < size-1; y++) {
 		total += graph[finalArray[y]][finalArray[y+1]];
 	}
+	total += graph[finalArray[size-1]][finalArray[0]];
 	cout << "total is " << total << endl;
 	
 	//cout << endl;
