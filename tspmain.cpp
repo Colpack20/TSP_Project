@@ -182,10 +182,36 @@ int primMST(int **graph, int size)
 	}
 
 	//nearby matching
-	for (int i = (oddV.size()-1); i >= 0; i-=2){
+	/*for (int i = (oddV.size()-1); i >= 0; i-=2){
 		mst[oddV[i]][oddV[i-1]] = graph[oddV[i]][oddV[i-1]];
 		mst[oddV[i-1]][oddV[i]] = graph[oddV[i]][oddV[i-1]];
-	}
+	}*/
+	int shortest = 0;
+	int counterg = 0;
+	int neighborV;
+	//vector<int>match or int array[oddV.size()]
+	vector<int>match;
+	for (int i = 0; i < oddV.size(); i++)
+		for(int j = 0; j < oddV.size(); j++)
+			for(int k = 0; k < match.size(); k++)
+				if((match[k] != oddV[i] || match[k] != oddV[j]) && i != j){
+					if(counterg > 0)
+					{			
+						if(graph[oddV[i]][oddV[j]] < shortest){
+							shortest = graph[oddV[i]][oddV[j]];
+							neighborV = j;
+						}
+						if(j == oddV.size()-1){
+							match.push_back(i);
+							match.push_back(neighborV);
+						}
+					}
+					if(counterg == 0)
+					{	
+						shortest = graph[oddV[i]][oddV[j]];
+						counterg++;
+					}				
+				}
 	//euler tour
 	vector<vector<int> > intermed(size);
 	for(int h = 0; h < size; h++) {
