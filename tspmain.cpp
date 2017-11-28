@@ -186,6 +186,7 @@ int primMST(int **graph, int size)
 		mst[oddV[i]][oddV[i-1]] = graph[oddV[i]][oddV[i-1]];
 		mst[oddV[i-1]][oddV[i]] = graph[oddV[i]][oddV[i-1]];
 	}*/
+	//Updated matching algorithm
 	int shortest = 0;
 	int counterg = 0;
 	int neighborV;
