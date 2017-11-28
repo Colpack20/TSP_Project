@@ -187,7 +187,7 @@ int primMST(int **graph, int size)
 		mst[oddV[i-1]][oddV[i]] = graph[oddV[i]][oddV[i-1]];
 	}*/
 	//Updated matching algorithm
-	int shortest = 0;
+	/*int shortest = 0;
 	int counterg = 0;
 	int neighborV;
 	//vector<int>match or int array[oddV.size()]
@@ -212,7 +212,7 @@ int primMST(int **graph, int size)
 						shortest = graph[oddV[i]][oddV[j]];
 						counterg++;
 					}				
-				}
+				}*/
 	//euler tour
 	vector<vector<int> > intermed(size);
 	for(int h = 0; h < size; h++) {
