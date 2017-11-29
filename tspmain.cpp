@@ -213,6 +213,49 @@ int primMST(int **graph, int size)
 						counterg++;
 					}				
 				}*/
+	//Improved matching
+	int shortest = 0;
+	int counterg = 0;
+	int neighborY, neighborX;
+	//int k;
+	//int count2 = 0;
+	//vector<int>connectedv;
+	cout << "oddv " << oddV.size() << endl;
+	for (int i = 0; i < oddV.size(); i++)
+	{
+		counterg = 0;
+		for(int j = 0; j < oddV.size(); j++)
+		{
+			if(i != j)
+			{
+				if(counterg > 0)
+				{
+					counterg++;
+					if(graph[oddV[i]][oddV[j]] < shortest)
+					{
+						shortest = graph[oddV[i]][oddV[j]];						
+						neighborX = i;
+						neighborY = j;
+					}				
+				}
+				if(j == oddV.size()-1 && counterg > 0) 
+					{
+						//cout << "x is " << neighborX << endl;
+						//cout << "y is " << neighborY << endl;						
+						mst[oddV[neighborX]][oddV[neighborY]] = graph[oddV[neighborX]][oddV[neighborY]];
+						mst[oddV[neighborY]][oddV[neighborX]] = graph[oddV[neighborX]][oddV[neighborY]];
+					}
+				if(counterg == 0)	
+				{
+				shortest = graph[oddV[i]][oddV[j]];
+				//cout << "shortest is " << shortest << endl;
+				neighborX = i;
+				neighborY = j;
+				counterg++;
+				}	
+			}
+		}
+	}
 	//euler tour
 	vector<vector<int> > intermed(size);
 	for(int h = 0; h < size; h++) {
