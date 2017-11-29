@@ -220,7 +220,7 @@ int primMST(int **graph, int size)
 	//int k;
 	//int count2 = 0;
 	//vector<int>connectedv;
-	cout << "oddv " << oddV.size() << endl;
+	//cout << "oddv " << oddV.size() << endl;
 	for (int i = 0; i < oddV.size(); i++)
 	{
 		counterg = 0;
