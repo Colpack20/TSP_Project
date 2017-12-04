@@ -1,4 +1,5 @@
 # TSP_Project
+### This code outputs a tour sum that is at least 3/2 or less than the optimal tour sum
     run make tsp to create object file
     run ./tsp file_name where file_name is the input file
     run make clean to remove object file and .tour files
