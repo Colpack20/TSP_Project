@@ -4,11 +4,12 @@
     run make clean to remove object file and .tour files
 
 # Files should be in the form 
-                              0  x-coordinate y-coordinate
-                              1  x-coordinate y-coordinate
-                              2  x-coordinate y-coordinate
-                              3  x-coordinate y-coordinate
-                              .....................
-                              .....................
-                              .....................
-                              n  x-coordinate y-coordinate
+    0  x-coordinate y-coordinate
+    1  x-coordinate y-coordinate
+    2  x-coordinate y-coordinate
+    3  x-coordinate y-coordinate
+    .....................
+    .....................
+    .....................
+    n  x-coordinate y-coordinate
+## A file will be outputted called inputfilename.tour which looks the same as the input file except with the total tour amount on the first line
