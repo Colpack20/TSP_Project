@@ -3,3 +3,4 @@ tsp: tspmain.cpp
 
 clean:
 	rm tsp *.tour
+kjlkj
