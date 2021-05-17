@@ -1,9 +1,3 @@
-/********************************************************************
- * CS 325 - Section 400
- * Project Group 22: Kyle Reed, Will Wagner, Ryan Gift
- * Due Date: 12/01/2017
- * Description:
- *******************************************************************/
 #include<bits/stdc++.h>
 using namespace std;
 #define DEBUG 0
